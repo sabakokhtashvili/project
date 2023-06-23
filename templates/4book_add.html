@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>დაამატეთ წიგნი</title>
+</head>
+<body>
+    <h1>დაამატეთ წიგნი</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('book_add') }}" method="POST">
+        <label for="title">სათაური:</label>
+        <input type="text" name="title" required><br>
+        <label for="author">ავტორი:</label>
+        <input type="text" name="author" required><br>
+        <label for="review">აღწერა:</label>
+        <textarea name="review"></textarea><br>
+        <button type="submit">წიგნის დამატება</button>
+    </form>
+</body>
+</html>
